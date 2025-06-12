@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Knowledge Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #ef233c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #bd1a97 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            color: var(--dark);
+        }
+
+        .quiz-container {
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .quiz-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: white;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+
+        .quiz-body {
+            padding: 2rem;
+        }
+
+        .progress-container {
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+            padding: 0.5rem;
+            background: #f8f9fa;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        .question-container {
+            margin-bottom: 1.5rem;
+            min-height: 100px;
+            background: #fff;
+            border-radius: 6px;
+            padding: 1rem;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-number {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option {
+            padding: 0.75rem 1.25rem;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .option:hover {
+            border-color: var(--primary);
+            background: rgba(67, 97, 238, 0.1);
+            transform: translateX(5px);
+            box-shadow: 0 6px 16px rgba(67, 97, 238, 0.3);
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background: rgba(67, 97, 238, 0.15);
+            transform: none;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+        }
+
+       Imgur.com
+
+System: Here's the updated quiz webpage with shadow effects added to various elements, maintaining the medium-sized container and hover effects:
+
+<xaiArtifact artifact_id="39b7164a-db1a-4b8d-9a20-92eaa81df842" artifact_version_id="1540d7a5-ea11-4cc2-aef7-a1b94ec373e0" title="index.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Knowledge Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #ef233c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #304370 0%, #872e87 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            color: var(--dark);
+        }
+
+        .quiz-container {
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            background: white;
+            border-radius: 12px; 
+            background: rgba(255, 255, 255, 0.7) url('https://static.vecteezy.com/system/resources/previews/015/132/071/non_2x/abstract-the-cyan-background-for-design-hd-wallpaper-free-vector-free-photo.jpg') no-repeat center center/cover;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .quiz-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: white;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+
+        .quiz-body {
+            padding: 2rem;
+        }
+
+        .progress-container {
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+            padding: 0.5rem;
+            background: #f8f9fa;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        .question-container {
+            margin-bottom: 1.5rem;
+            min-height: 100px;
+            background: #fff;
+            border-radius: 6px;
+            padding: 1rem;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-number {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option {
+            padding: 0.75rem 1.25rem;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .option:hover {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #87e3f3 0%, #f88ddb 100%);
+            transform: translateX(5px);
+            box-shadow: 0 6px 16px rgba(67, 97, 238, 0.3);
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #6e73da 0%, #872e87 100%);
+            transform: none;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+        }
+
+        .option.correct {
+            border-color: var(--success);
+            background: rgba(76, 201, 240, 0.1);
+            box-shadow: 0 4px 12px rgba(76, 201, 240, 0.2);
+        }
+
+        .option.incorrect {
+            border-color: var(--danger);
+            background: rgba(239, 35, 60, 0.1);
+            box-shadow: 0 4px 12px rgba(239, 35, 60, 0.2);
+        }
+
+        .option-prefix {
+            font-weight: 600;
+            margin-right: 0.75rem;
+            color: #6c757d;
+            transition: color 0.3s ease;
+        }
+
+        .option:hover .option-prefix {
+            color: var(--primary);
+        }
+
+        .option.selected .option-prefix,
+        .option.correct .option-prefix {
+            color: var(--primary);
+        }
+
+        .option.incorrect .option-prefix {
+            color: var(--danger);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .btn {
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 16px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(142, 222, 246, 0.897),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 2px solid #dee2e6;
+            color: #495057;
+        }
+
+        .btn-outline:hover {
+            /*border-color: var(--primary);*/
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .result-container {
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+            background: #fff;
+        }
+
+        .result-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .result-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .result-score {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: #495057;
+        }
+
+        .result-feedback {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .feedback-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .feedback-item {
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .feedback-question {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .feedback-answer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .feedback-correct {
+            color: var(--success);
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
+        .feedback-incorrect {
+            color: var(--danger);
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
+        .feedback-icon {
+            margin-right: 0.5rem;
+        }
+
+        .timer {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: white;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .timer i {
+            margin-right: 0.4rem;
+        }
+
+        @media (max-width: 768px) {
+            .quiz-body {
+                padding: 1.25rem;
+            }
+            
+            .question-text {
+                font-size: 1rem;
+            }
+            
+            .options-container {
+                gap: 0.5rem;
+            }
+            
+            .option {
+                padding: 0.6rem 0.8rem;
+            }
+            
+            .option:hover {
+                transform: translateX(3px);
+                box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+            }
+            
+            .btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            
+            .btn-primary:hover,
+            .btn-outline:hover {
+                transform: translateY(-2px) scale(1.03);
+                box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+            }
+            
+            .quiz-container {
+                max-height: 90vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>Professional Knowledge Assessment</h1>
+            <div class="timer" id="timer">
+                <i class="fas fa-clock"></i>
+                <span id="time">10:00</span>
+            </div>
+        </div>
+        
+        <div class="quiz-body">
+            <div id="quiz-content">
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span>Question <span id="current-question">1</span> of <span id="total-questions">5</span></span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="question-container">
+                    <div class="question-number">Question <span id="question-number">1</span></div>
+                    <div class="question-text" id="question"></div>
+                </div>
+                
+                <div class="options-container" id="options"></div>
+                
+                <div class="navigation">
+                    <button id="prevBtn" class="btn btn-outline" disabled>
+                        <i class="fas fa-arrow-left mr-2"></i> Previous
+                    </button>
+                    <button id="nextBtn" class="btn btn-primary">
+                        Next <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="result" class="result-container hidden">
+                <div class="result-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2 class="result-title">Assessment Complete!</h2>
+                <div class="result-score">
+                    You scored <span id="score">0</span> out of <span id="total">5</span>
+                </div>
+                
+                <div class="result-feedback hidden" id="feedback-container">
+                    <h3 class="feedback-title">Review your answers:</h3>
+                    <div id="feedback-items"></div>
+                </div>
+                
+                <button id="restartBtn" class="btn btn-primary mt-4">
+                    <i class="fas fa-redo mr-2"></i> Restart Assessment
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Which framework is known for its virtual DOM implementation?",
+                options: ["Angular", "React", "Vue", "Svelte"],
+                answer: "React",
+                explanation: "React uses a virtual DOM to efficiently update the browser's DOM."
+            },
+            {
+                question: "What does CSS stand for?",
+                options: [
+                    "Computer Style Sheets",
+                    "Creative Style Sheets",
+                    "Cascading Style Sheets",
+                    "Colorful Style Sheets"
+                ],
+                answer: "Cascading Style Sheets",
+                explanation: "CSS stands for Cascading Style Sheets, which is used to style HTML documents."
+            },
+            {
+                question: "Which of the following is NOT a JavaScript data type?",
+                options: ["String", "Boolean", "Object", "Float"],
+                answer: "Float",
+                explanation: "JavaScript has Number type which includes both integer and floating-point numbers, but not a separate Float type."
+            },
+            {
+                question: "What is the purpose of the 'use strict' directive in JavaScript?",
+                options: [
+                    "To enforce stricter type checking",
+                    "To enable a restricted variant of JavaScript",
+                    "To improve performance",
+                    "To enable experimental features"
+                ],
+                answer: "To enable a restricted variant of JavaScript",
+                explanation: "'use strict' enables a stricter mode of JavaScript that catches common coding mistakes."
+            },
+            {
+                question: "Which HTTP status code indicates 'Not Found'?",
+                options: ["200", "301", "404", "500"],
+                answer: "404",
+                explanation: "The 404 status code indicates that the requested resource could not be found on the server."
+            }
+        ];
+
+        // Quiz state
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedAnswers = new Array(questions.length).fill(null);
+        let quizCompleted = false;
+        let timeLeft = 600; // 10 minutes in seconds
+        let timerInterval;
+
+        // DOM elements
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const resultEl = document.getElementById('result');
+        const progressEl = document.getElementById('progress');
+        const currentQuestionEl = document.getElementById('current-question');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const questionNumberEl = document.getElementById('question-number');
+        const progressPercentEl = document.getElementById('progress-percent');
+        const scoreEl = document.getElementById('score');
+        const totalEl = document.getElementById('total');
+        const feedbackContainer = document.getElementById('feedback-container');
+        const feedbackItems = document.getElementById('feedback-items');
+        const timeEl = document.getElementById('time');
+        const quizContent = document.getElementById('quiz-content');
+        const restartBtn = document.getElementById('restartBtn');
+
+        // Initialize quiz
+        function initQuiz() {
+            totalQuestionsEl.textContent = questions.length;
+            totalEl.textContent = questions.length;
+            startTimer();
+            loadQuestion();
+        }
+
+        // Timer functions
+        function startTimer() {
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    if (!quizCompleted) {
+                        showResult();
+                    }
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timeEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 60) {
+                document.getElementById('timer').style.background = 'rgba(239, 35, 60, 0.7)';
+            }
+        }
+
+        // Load question
+        function loadQuestion() {
+            const question = questions[currentQuestionIndex];
+            questionEl.textContent = question.question;
+            optionsEl.innerHTML = '';
+            
+            currentQuestionEl.textContent = currentQuestionIndex + 1;
+            questionNumberEl.textContent = currentQuestionIndex + 1;
+            
+            question.options.forEach((option, index) => {
+                const optionEl = document.createElement('div');
+                optionEl.className = 'option';
+                if (selectedAnswers[currentQuestionIndex] === option) {
+                    optionEl.classList.add('selected');
+                }
+                
+                const prefix = document.createElement('span');
+                prefix.className = 'option-prefix';
+                prefix.textContent = String.fromCharCode(65 + index) + '.';
+                
+                const text = document.createElement('span');
+                text.textContent = option;
+                
+                optionEl.appendChild(prefix);
+                optionEl.appendChild(text);
+                
+                optionEl.addEventListener('click', () => selectOption(option));
+                optionsEl.appendChild(optionEl);
+            });
+            
+            updateButtons();
+            updateProgress();
+        }
+
+        // Select option
+        function selectOption(option) {
+            selectedAnswers[currentQuestionIndex] = option;
+            loadQuestion();
+            nextBtn.disabled = false;
+        }
+
+        // Update navigation buttons
+        function updateButtons() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.disabled = selectedAnswers[currentQuestionIndex] === null;
+            
+            if (currentQuestionIndex === questions.length - 1) {
+                nextBtn.innerHTML = 'Finish <i class="fas fa-check ml-2"></i>';
+            } else {
+                nextBtn.innerHTML = 'Next <i class="fas fa-arrow-right ml-2"></i>';
+            }
+        }
+
+        // Update progress
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressEl.style.width = `${progress}%`;
+            progressPercentEl.textContent = `${Math.round(progress)}%`;
+        }
+
+        // Show result
+        function showResult() {
+            clearInterval(timerInterval);
+            quizCompleted = true;
+            
+            score = selectedAnswers.reduce((acc, answer, i) => {
+                return answer === questions[i].answer ? acc + 1 : acc;
+            }, 0);
+            
+            scoreEl.textContent = score;
+            
+            if (score < questions.length) {
+                feedbackContainer.classList.remove('hidden');
+                generateFeedback();
+            }
+            
+            quizContent.classList.add('hidden');
+            resultEl.classList.remove('hidden');
+        }
+
+        // Generate feedback
+        function generateFeedback() {
+            feedbackItems.innerHTML = '';
+            
+            questions.forEach((question, index) => {
+                const userAnswer = selectedAnswers[index];
+                const isCorrect = userAnswer === question.answer;
+                
+                if (!isCorrect) {
+                    const item = document.createElement('div');
+                    item.className = 'feedback-item';
+                    
+                    const questionEl = document.createElement('div');
+                    questionEl.className = 'feedback-question';
+                    questionEl.textContent = `${index + 1}. ${question.question}`;
+                    
+                    const userAnswerEl = document.createElement('div');
+                    userAnswerEl.className = 'feedback-answer';
+                    userAnswerEl.innerHTML = `
+                        <i class="fas fa-times feedback-icon" style="color: var(--danger)"></i>
+                        <span>Your answer:</span>
+                        <span class="feedback-incorrect">${userAnswer || 'No answer'}</span>
+                    `;
+                    
+                    const correctAnswerEl = document.createElement('div');
+                    correctAnswerEl.className = 'feedback-answer';
+                    correctAnswerEl.innerHTML = `
+                        <i class="fas fa-check feedback-icon" style="color: var(--success)"></i>
+                        <span>Correct answer:</span>
+                        <span class="feedback-correct">${question.answer}</span>
+                    `;
+                    
+                    const explanationEl = document.createElement('div');
+                    explanationEl.className = 'feedback-answer';
+                    explanationEl.innerHTML = `
+                        <i class="fas fa-info-circle feedback-icon" style="color: var(--primary)"></i>
+                        <span>${question.explanation}</span>
+                    `;
+                    
+                    item.appendChild(questionEl);
+                    item.appendChild(userAnswerEl);
+                    item.appendChild(correctAnswerEl);
+                    item.appendChild(explanationEl);
+                    
+                    feedbackItems.appendChild(item);
+                }
+            });
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectedAnswers.fill(null);
+            quizCompleted = false;
+            timeLeft = 600;
+            
+            quizContent.classList.remove('hidden');
+            resultEl.classList.add('hidden');
+            feedbackContainer.classList.add('hidden');
+            
+            document.getElementById('timer').style.background = 'rgba(0, 0, 0, 0.1)';
+            startTimer();
+            loadQuestion();
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        });
+
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // Initialize quiz
+        initQuiz();
+    </script>
+</body>
+</html>
